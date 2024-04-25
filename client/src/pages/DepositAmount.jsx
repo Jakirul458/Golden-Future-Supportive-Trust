@@ -4,17 +4,15 @@ import { toast } from 'react-toastify';
 
 const defaultContactFormData = {
   date: '',
-  serial_no: '',
   account_no: '',
-  consumer_name: '',
-  address: '',
-  aadhar_no: '',
-  mobile_no: '',
-  mail_id: '',
-  opening_bal: ''
+  transaction_no: '',
+  deposit_bal: '',
+  remarks:''
+  
+
 };
 
-export const CreateAccount = () => {
+export const DepositAmount = () => {
   const [member, setMember] = useState(defaultContactFormData);
   const { authorizationToken } = useAuth();
 
@@ -29,7 +27,7 @@ export const CreateAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/admin/admincreateaccount", {
+      const response = await fetch(`http://localhost:3000/api/admin/deposit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,11 +40,11 @@ export const CreateAccount = () => {
         setMember(defaultContactFormData);
         const data = await response.json();
         console.log(data);
-        toast.success("Account create successfully");
+        toast.success("Money Added successfully");
       }
     } catch (error) {
-      console.error("Error create account:", error);
-      toast.error("Account not created");
+      console.error("Error adding money:", error);
+      toast.error("Money Not Added");
     }
   };
 
@@ -55,7 +53,7 @@ export const CreateAccount = () => {
       <section>
         <main>
           <div className="section-registration">
-            <h1>Create Account</h1>
+            <h1>Deposit money</h1>
             <br/>
             <form onSubmit={handleSubmit}>
               <div>
@@ -63,21 +61,22 @@ export const CreateAccount = () => {
                 <input 
                   type="date" 
                   name="date"
+                  id="date"
                   placeholder="Enter your date"
-                  id="text"
                   required 
                   autoComplete="off"
                   value={member.date}
                   onChange={handleInput}
                 />
               </div>
+             
               <div>
-                <label htmlFor="account_number"> Account Number</label>
+                <label htmlFor="account_no"> Account Number</label>
                 <input 
                   type="text" 
                   name="account_no"
+                  id="account_no"
                   placeholder="Enter account number"
-                  id="text"
                   required 
                   autoComplete="off"
                   value={member.account_no}
@@ -85,83 +84,47 @@ export const CreateAccount = () => {
                 />
               </div>
               <div>
-                <label htmlFor="name"> Consumer Name</label>
+                <label htmlFor="transaction_no"> Transaction id</label>
                 <input 
                   type="text" 
-                  name="consumer_name"
-                  placeholder="Enter consumer name"
-                  id="text"
+                  name="transaction_no"
+                  id="transaction_no"
+                  placeholder="Transaction id"
                   required 
                   autoComplete="off"
-                  value={member.consumer_name}
+                  value={member.transaction_no}
                   onChange={handleInput}
                 />
               </div>
+
               <div>
-                <label htmlFor="address"> Address</label>
-                <input 
-                  type="text" 
-                  name="address"
-                  placeholder="Enter your address"
-                  id="text"
-                  required 
-                  autoComplete="off"
-                  value={member.address}
-                  onChange={handleInput}
-                />
-              </div>
-              <div>
-                <label htmlFor="number"> Aadhar Number</label>
+                <label htmlFor="deposit_bal"> Deposit Amount</label>
                 <input 
                   type="number" 
-                  name="aadhar_no"
-                  placeholder="Enter your Aadhar number"
-                  id="text"
+                  name="deposit_bal"
+                  id="deposit_bal"
+                  placeholder="Deposit amount"
                   required 
                   autoComplete="off"
-                  value={member.aadhar_no}
+                  value={member.deposit_bal}
                   onChange={handleInput}
                 />
               </div>
+
               <div>
-                <label htmlFor="phone"> Mobile Number</label>
-                <input 
-                  type="number" 
-                  name="mobile_no"
-                  placeholder="Enter your mobile number"
-                  id="text"
-                  required 
-                  autoComplete="off"
-                  value={member.mobile_no}
-                  onChange={handleInput}
-                />
-              </div>
-              <div>
-                <label htmlFor="emai"> Gmail id</label>
-                <input 
-                  type="email" 
-                  name="mail_id"
-                  placeholder="Enter your email address"
-                  id="text"
-                  required 
-                  autoComplete="off"
-                  value={member.mail_id}
-                  onChange={handleInput}
-                />
-              </div>
-              <div>
-                <label htmlFor="balance"> Opening balance</label>
+                <label htmlFor="remarks"> Remarks</label>
                 <input 
                   type="text" 
-                  name="opening_bal"
-                  placeholder="Enter opening balance"
-                  id="text"
+                  name="remarks"
+                  id="remarks"
+                  placeholder="Remarks"
                   required 
                   autoComplete="off"
-                  value={member.opening_bal}
+                  value={member.remarks}
                   onChange={handleInput}
                 />
               </div>
+              
               <button type="submit">Save</button>
             </form>
           </div>
@@ -169,6 +132,4 @@ export const CreateAccount = () => {
       </section>
     </div>
   );
-}
-
-
+};

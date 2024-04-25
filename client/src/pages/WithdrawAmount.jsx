@@ -4,17 +4,13 @@ import { toast } from 'react-toastify';
 
 const defaultContactFormData = {
   date: '',
-  serial_no: '',
   account_no: '',
-  consumer_name: '',
-  address: '',
-  aadhar_no: '',
-  mobile_no: '',
-  mail_id: '',
-  opening_bal: ''
+  transaction_id: '',
+  withdraw_amount: '',
+  remarks:''
 };
 
-export const CreateAccount = () => {
+export const WithdrawAmount = () => {
   const [member, setMember] = useState(defaultContactFormData);
   const { authorizationToken } = useAuth();
 
@@ -42,11 +38,11 @@ export const CreateAccount = () => {
         setMember(defaultContactFormData);
         const data = await response.json();
         console.log(data);
-        toast.success("Account create successfully");
+        toast.success("Money  withdraw successfully");
       }
     } catch (error) {
-      console.error("Error create account:", error);
-      toast.error("Account not created");
+      console.error("Error withdraw money:", error);
+      toast.error("Money not withdraw");
     }
   };
 
@@ -55,7 +51,7 @@ export const CreateAccount = () => {
       <section>
         <main>
           <div className="section-registration">
-            <h1>Create Account</h1>
+            <h1>Withdraw money</h1>
             <br/>
             <form onSubmit={handleSubmit}>
               <div>
@@ -71,6 +67,7 @@ export const CreateAccount = () => {
                   onChange={handleInput}
                 />
               </div>
+             
               <div>
                 <label htmlFor="account_number"> Account Number</label>
                 <input 
@@ -85,84 +82,48 @@ export const CreateAccount = () => {
                 />
               </div>
               <div>
-                <label htmlFor="name"> Consumer Name</label>
+                <label htmlFor="name"> Transaction id</label>
                 <input 
                   type="text" 
-                  name="consumer_name"
-                  placeholder="Enter consumer name"
+                  name="transaction_id"
+                  placeholder="Transaction id"
                   id="text"
                   required 
                   autoComplete="off"
-                  value={member.consumer_name}
+                  value={member.transaction_id}
                   onChange={handleInput}
                 />
               </div>
+
               <div>
-                <label htmlFor="address"> Address</label>
+                <label htmlFor="name"> Withdraw amount</label>
                 <input 
                   type="text" 
-                  name="address"
-                  placeholder="Enter your address"
+                  name="withdraw_amount"
+                  placeholder="Withdraw amount"
                   id="text"
                   required 
                   autoComplete="off"
-                  value={member.address}
+                  value={member.withdraw_amount}
                   onChange={handleInput}
                 />
               </div>
+
               <div>
-                <label htmlFor="number"> Aadhar Number</label>
-                <input 
-                  type="number" 
-                  name="aadhar_no"
-                  placeholder="Enter your Aadhar number"
-                  id="text"
-                  required 
-                  autoComplete="off"
-                  value={member.aadhar_no}
-                  onChange={handleInput}
-                />
-              </div>
-              <div>
-                <label htmlFor="phone"> Mobile Number</label>
-                <input 
-                  type="number" 
-                  name="mobile_no"
-                  placeholder="Enter your mobile number"
-                  id="text"
-                  required 
-                  autoComplete="off"
-                  value={member.mobile_no}
-                  onChange={handleInput}
-                />
-              </div>
-              <div>
-                <label htmlFor="emai"> Gmail id</label>
-                <input 
-                  type="email" 
-                  name="mail_id"
-                  placeholder="Enter your email address"
-                  id="text"
-                  required 
-                  autoComplete="off"
-                  value={member.mail_id}
-                  onChange={handleInput}
-                />
-              </div>
-              <div>
-                <label htmlFor="balance"> Opening balance</label>
+                <label htmlFor="remarks"> Remarks</label>
                 <input 
                   type="text" 
-                  name="opening_bal"
-                  placeholder="Enter opening balance"
-                  id="text"
+                  name="remarks"
+                  id="remarks"
+                  placeholder="Remarks"
                   required 
                   autoComplete="off"
-                  value={member.opening_bal}
+                  value={member.remarks}
                   onChange={handleInput}
                 />
               </div>
-              <button type="submit">Save</button>
+              
+              <button type="Withdraw">Withdraw</button>
             </form>
           </div>
         </main>
@@ -170,5 +131,3 @@ export const CreateAccount = () => {
     </div>
   );
 }
-
-

@@ -12,14 +12,17 @@ export const AdminLayout =()=>{
  <div className="container">
   <nav>
     <ul>
-      <li>
-        <NavLink to="users"> <FaUser />Users</NavLink>
-        </li>
+      <li><NavLink to="users"> <FaUser />Users</NavLink></li>
 
-        <li >
-      <NavLink to="productsEditor"> <FaHome />Products Editor</NavLink>
-        
-        </li>
+        <li ><NavLink to="productsEditor"> <FaHome />Products Editor</NavLink></li>
+
+        <li><NavLink to="/createaccount"> <FaHome /> Create account </NavLink></li>
+            <li><NavLink to="/depositamount"> <FaHome /> Deposit </NavLink></li>
+            <li><NavLink to="/withdrawamount"> <FaHome /> Withdraw  </NavLink></li>
+            <li><NavLink to="/findaccount"> <FaHome /> Find Account  </NavLink></li>
+            <li><NavLink to="/allconsumers"> <FaHome /> All Consumer  </NavLink></li>
+            <li><NavLink to="/statement"> <FaHome /> Statement  </NavLink></li>
+
             
     </ul>
     </nav>
