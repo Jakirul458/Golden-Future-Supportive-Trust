@@ -15,7 +15,41 @@ const AdminAddAllProducts= require("../controllers/Admin-Add-Products-controller
 // admin Add meal logic
 const adminAddCategory= require("../controllers/Admin-Add-Category-controller");
 
+
+
+
+//*------------------------*
+// saving Account Admin  Logic //
+//*-----------------------*
 const AdminCreateAccount= require("../controllers/Admin-CreateAccount-controller");
+const Deposit= require("../controllers/deposit");
+
+
+
+//*-----------------------------------*
+// Create Account  maintain by Admin //
+//*-----------------------------------*
+//Customer Information Form
+router.route("/admincreateaccount").post(userMiddleware,adminMiddleware,AdminCreateAccount);
+//Customer Money Deposit Logic 
+router.route("/deposit").post(userMiddleware,adminMiddleware,Deposit);
+
+
+//*------------------------------------------*
+// Saving Account Data Fetch,Update,Delete //
+//*------------------------------------------*
+//Get all users data fetch
+router.route("/allConsumers").get(userMiddleware,adminMiddleware,adminController.getAllConsumers);
+//single data fetch for Consumer logic
+router.route("/allConsumers/:id").get(userMiddleware,adminMiddleware,adminController.singleConsumerData);
+//update Consumer data
+router.route("/allConsumers/update/:id").patch(userMiddleware,adminMiddleware,adminController.updateConsumerData);
+// delete consumer data
+router.route("/allConsumers/delete/:id").delete(userMiddleware,adminMiddleware,adminController.deleteConsumerData);
+
+
+
+
 
 //*--------------------------------------------------------*
 // Data Retrieve Logic For Users Data Fetch,Update,Delete //
@@ -23,7 +57,7 @@ const AdminCreateAccount= require("../controllers/Admin-CreateAccount-controller
 //Get all users data fetch
 router.route("/users").get(userMiddleware,adminMiddleware,adminController.getAllUsers);
 //single data fetch
-router.route("/users/:id").get(userMiddleware,adminMiddleware,adminController.singleDataById);
+router.route("/users/:id").get(userMiddleware,adminMiddleware,adminController.singleConsumerData);
 //update user data
 router.route("/users/update/:id").patch(userMiddleware,adminMiddleware,adminController.updateUserData);
 // delete routes create
@@ -38,11 +72,7 @@ router.route("/adminAddProducts").post(userMiddleware,adminMiddleware,AdminAddAl
 router.route("/adminAddCategory").post(userMiddleware,adminMiddleware,adminAddCategory);
 
 
-//*-----------------------------------*
-// Create Account  maintain by Admin //
-//*-----------------------------------*
-//Customer Information Form
-router.route("/admincreateaccount").post(userMiddleware,adminMiddleware,AdminCreateAccount);
+
 
 
 module.exports = router;

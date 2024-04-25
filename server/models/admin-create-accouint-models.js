@@ -2,7 +2,6 @@ const { Schema, model } = require("mongoose");
 
 const AdminCreateAccount = new Schema({
     date: { type: String, required: true },
-    serial_no: { type: String, required: true },
     account_no: { type: String, required: true },
     consumer_name: { type: String, required: true },
     address: { type: String, required: true },
