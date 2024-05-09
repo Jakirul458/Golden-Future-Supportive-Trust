@@ -1,5 +1,5 @@
 const user1 = require("../models/user-models");
-const   allConsumers = require("../models/admin-create-accouint-models");
+const allConsumers = require("../models/admin-create-accouint-models");
 
 
 
@@ -9,22 +9,22 @@ const   allConsumers = require("../models/admin-create-accouint-models");
 //  admin using get all user logic   //
 //*-----------------------------------*
 
-const getAllUsers =async(req,res,next)=>{
+const getAllUsers = async (req, res, next) => {
 
-     try {
-        
-        const users= await user1.find({},{password:0});
+  try {
 
-          if(!users || users.length === 0){
-            res.status(404),json({message:"no users found"})
-          }
-          res.status(200).json(users);
+    const users = await user1.find({}, { password: 0 });
 
-     } catch (error) {
+    if (!users || users.length === 0) {
+      res.status(404), json({ message: "no users found" })
+    }
+    res.status(200).json(users);
 
-        /// using this logic error  forward backend to frontend
-      next(error);
-     }
+  } catch (error) {
+
+    /// using this logic error  forward backend to frontend
+    next(error);
+  }
 }
 
 
@@ -32,22 +32,22 @@ const getAllUsers =async(req,res,next)=>{
 //*------------------------------*
 // updateUserData  fetch logic   //
 //*------------------------------*
- 
-const updateUserData =async(req,res,next)=>{
 
-try {
-  const id = req.params.id;
-  const updateUser=req.body;
-  const updateUsers= await user1.updateOne({_id:id},{$set:updateUser});
+const updateUserData = async (req, res, next) => {
 
-
-  return res.status(200).json(updateUsers);
-    
+  try {
+    const id = req.params.id;
+    const updateUser = req.body;
+    const updateUsers = await user1.updateOne({ _id: id }, { $set: updateUser });
 
 
-} catch (error) {
-  next(error);
-}
+    return res.status(200).json(updateUsers);
+
+
+
+  } catch (error) {
+    next(error);
+  }
 }
 
 
@@ -56,34 +56,34 @@ try {
 // single data fetch logic   //
 //*---------------------------*
 
-const singleDataById= async(req, res,next) => {
-   try {
-         const id = req.params.id;
+const singleDataById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
 
-         const data = await user1.findOne({_id: id},{password:0});
-         return res.status(200).json(data) ;
+    const data = await user1.findOne({ _id: id }, { password: 0 });
+    return res.status(200).json(data);
 
-    
-   } catch (error) {
+
+  } catch (error) {
     next(error);
-   }
+  }
 }
 
 //*----------------------------*
 //     Delete user logic        //
 //*---------------------------*
-const deleteUserById = async(req,res,next)=>{
+const deleteUserById = async (req, res, next) => {
 
 
-       try {
-        const id =  req.params.id;
-        await user1.deleteOne ({_id:id});
-         return res.status(200).json({message:"user deleted successfully"});
-        
-       } catch (error) {
-        next(error)
+  try {
+    const id = req.params.id;
+    await user1.deleteOne({ _id: id });
+    return res.status(200).json({ message: "user deleted successfully" });
 
-       }
+  } catch (error) {
+    next(error)
+
+  }
 }
 
 
@@ -93,67 +93,67 @@ const deleteUserById = async(req,res,next)=>{
 // Saving Account Data Fetch,Update,Delete //
 //*------------------------------------------*
 //Get all users data fetch
-const getAllConsumers =async(req,res,next)=>{
+const getAllConsumers = async (req, res, next) => {
 
   try {
-     
-     const users= await allConsumers.find({},{password:0});
 
-       if(!users || users.length === 0){
-         res.status(404),json({message:"no consumers found"})
-       }
-       res.status(200).json(users);
+    const users = await allConsumers.find({}, { password: 0 });
+
+    if (!users || users.length === 0) {
+      res.status(404), json({ message: "no consumers found" })
+    }
+    res.status(200).json(users);
 
   } catch (error) {
 
-     /// using this logic error  forward backend to frontend
-   next(error);
+    /// using this logic error  forward backend to frontend
+    next(error);
   }
 }
 
 //single consumer data fetch
 
-const singleConsumerData= async(req, res,next) => {
+const singleConsumerData = async (req, res, next) => {
   try {
-        const id = req.params.id;
+    const id = req.params.id;
 
-        const data = await allConsumers.findOne({_id: id},{password:0});
-        return res.status(200).json(data) ;
+    const data = await allConsumers.findOne({ _id: id }, { password: 0 });
+    return res.status(200).json(data);
 
-   
+
   } catch (error) {
-   next(error);
+    next(error);
   }
 }
 
 //update  consumer data fetch
-const updateConsumerData =async(req,res,next)=>{
+const updateConsumerData = async (req, res, next) => {
 
-try {
-  const id = req.params.id;
-  const updateConsumer=req.body;
-  const  updateConsumers= await allConsumers.updateOne({_id:id},{$set:updateConsumer});
-
-
-  return res.status(200).json(updateConsumers);
-    
+  try {
+    const id = req.params.id;
+    const updateConsumer = req.body;
+    const updateConsumers = await allConsumers.updateOne({ _id: id }, { $set: updateConsumer });
 
 
-} catch (error) {
-  next(error);
-}
+    return res.status(200).json(updateConsumers);
+
+
+
+  } catch (error) {
+    next(error);
+  }
 }
 
 
 //delete  consumer data 
-const deleteConsumerData = async(req,res,next)=>{
+const deleteConsumerData = async (req, res, next) => {
   try {
-   const id =  req.params.id;
-   await allConsumers.deleteOne ({_id:id});
-    return res.status(200).json({message:"consumer deleted successfully"});
-   
+    const id = req.params.id;
+    await allConsumers.deleteOne({ _id: id });
+    return res.status(200).json({ message: "consumer deleted successfully" });
+
   } catch (error) {
-   next(error)
+    next(error)
 
   }
 }
@@ -166,11 +166,11 @@ module.exports = {
   getAllUsers,
   deleteUserById,
   singleDataById,
-  updateUserData, 
+  updateUserData,
 
   getAllConsumers,
   singleConsumerData,
   updateConsumerData,
   deleteConsumerData,
- 
+
 };

@@ -1,4 +1,4 @@
-const depo= require("../models/deposit-models");
+const depo= require("../models/transaction-models");
 
 const Deposit= async (req,res)=>{
     try {

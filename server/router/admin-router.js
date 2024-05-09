@@ -23,6 +23,8 @@ const adminAddCategory= require("../controllers/Admin-Add-Category-controller");
 //*-----------------------*
 const AdminCreateAccount= require("../controllers/Admin-CreateAccount-controller");
 const Deposit= require("../controllers/deposit");
+const Withdraw= require("../controllers/withdraw");
+
 
 
 
@@ -33,6 +35,9 @@ const Deposit= require("../controllers/deposit");
 router.route("/admincreateaccount").post(userMiddleware,adminMiddleware,AdminCreateAccount);
 //Customer Money Deposit Logic 
 router.route("/deposit").post(userMiddleware,adminMiddleware,Deposit);
+//Customer Money Deposit Logic 
+router.route("/withdraw").post(userMiddleware,adminMiddleware, Withdraw);
+
 
 
 //*------------------------------------------*
