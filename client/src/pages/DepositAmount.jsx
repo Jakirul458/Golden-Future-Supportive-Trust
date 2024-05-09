@@ -3,13 +3,12 @@ import { useAuth } from "../store/auth";
 import { toast } from 'react-toastify';
 
 const defaultContactFormData = {
+  type: 'deposit',
   date: '',
   account_no: '',
   transaction_no: '',
   deposit_bal: '',
-  remarks:''
-  
-
+  remarks: ''
 };
 
 export const DepositAmount = () => {
@@ -37,10 +36,13 @@ export const DepositAmount = () => {
       });
 
       if (response.ok) {
-        setMember(defaultContactFormData);
         const data = await response.json();
         console.log(data);
         toast.success("Money Added successfully");
+        setMember(defaultContactFormData); // Clear form on successful submission
+      } else {
+        const errorData = await response.json(); // Handle specific error messages from server
+        toast.error(errorData.message || "Money Not Added");
       }
     } catch (error) {
       console.error("Error adding money:", error);
@@ -73,7 +75,7 @@ export const DepositAmount = () => {
               <div>
                 <label htmlFor="account_no"> Account Number</label>
                 <input 
-                  type="text" 
+                  type="number" 
                   name="account_no"
                   id="account_no"
                   placeholder="Enter account number"
@@ -86,7 +88,7 @@ export const DepositAmount = () => {
               <div>
                 <label htmlFor="transaction_no"> Transaction id</label>
                 <input 
-                  type="text" 
+                  type="number" 
                   name="transaction_no"
                   id="transaction_no"
                   placeholder="Transaction id"
@@ -113,8 +115,7 @@ export const DepositAmount = () => {
 
               <div>
                 <label htmlFor="remarks"> Remarks</label>
-                <input 
-                  type="text" 
+                <textarea 
                   name="remarks"
                   id="remarks"
                   placeholder="Remarks"

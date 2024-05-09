@@ -3,11 +3,12 @@ import { useAuth } from "../store/auth";
 import { toast } from 'react-toastify';
 
 const defaultContactFormData = {
+  type: 'withdraw',
   date: '',
   account_no: '',
-  transaction_id: '',
-  withdraw_amount: '',
-  remarks:''
+  transaction_no: '',
+  withdraw_bal: '', // Initialize as a number
+  remarks: ''
 };
 
 export const WithdrawAmount = () => {
@@ -25,7 +26,7 @@ export const WithdrawAmount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/admin/admincreateaccount", {
+      const response = await fetch(`http://localhost:3000/api/admin/withdraw`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,11 +39,11 @@ export const WithdrawAmount = () => {
         setMember(defaultContactFormData);
         const data = await response.json();
         console.log(data);
-        toast.success("Money  withdraw successfully");
+        toast.success("Money withdraw successfully");
       }
     } catch (error) {
-      console.error("Error withdraw money:", error);
-      toast.error("Money not withdraw");
+      console.error("Error withdrawing money:", error);
+      toast.error("Money not withdrawn");
     }
   };
 
@@ -60,7 +61,6 @@ export const WithdrawAmount = () => {
                   type="date" 
                   name="date"
                   placeholder="Enter your date"
-                  id="text"
                   required 
                   autoComplete="off"
                   value={member.date}
@@ -69,12 +69,11 @@ export const WithdrawAmount = () => {
               </div>
              
               <div>
-                <label htmlFor="account_number"> Account Number</label>
+                <label htmlFor="account_no"> Account Number</label>
                 <input 
                   type="text" 
                   name="account_no"
                   placeholder="Enter account number"
-                  id="text"
                   required 
                   autoComplete="off"
                   value={member.account_no}
@@ -82,29 +81,27 @@ export const WithdrawAmount = () => {
                 />
               </div>
               <div>
-                <label htmlFor="name"> Transaction id</label>
+                <label htmlFor="transaction_no"> Transaction id</label>
                 <input 
                   type="text" 
-                  name="transaction_id"
+                  name="transaction_no"
                   placeholder="Transaction id"
-                  id="text"
                   required 
                   autoComplete="off"
-                  value={member.transaction_id}
+                  value={member.transaction_no}
                   onChange={handleInput}
                 />
               </div>
 
               <div>
-                <label htmlFor="name"> Withdraw amount</label>
+                <label htmlFor="withdraw_bal"> Withdraw amount</label>
                 <input 
-                  type="text" 
-                  name="withdraw_amount"
+                  type="number" 
+                  name="withdraw_bal"
                   placeholder="Withdraw amount"
-                  id="text"
                   required 
                   autoComplete="off"
-                  value={member.withdraw_amount}
+                  value={member.withdraw_bal}
                   onChange={handleInput}
                 />
               </div>
@@ -114,7 +111,6 @@ export const WithdrawAmount = () => {
                 <input 
                   type="text" 
                   name="remarks"
-                  id="remarks"
                   placeholder="Remarks"
                   required 
                   autoComplete="off"
@@ -123,7 +119,7 @@ export const WithdrawAmount = () => {
                 />
               </div>
               
-              <button type="Withdraw">Withdraw</button>
+              <button type="submit">Withdraw</button>
             </form>
           </div>
         </main>

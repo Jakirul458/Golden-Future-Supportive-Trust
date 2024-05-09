@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 const defaultContactFormData = {
   date: '',
-  serial_no: '',
+
   account_no: '',
   consumer_name: '',
   address: '',
@@ -56,16 +56,16 @@ export const CreateAccount = () => {
         <main>
           <div className="section-registration">
             <h1>Create Account</h1>
-            <br/>
+            <br />
             <form onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="date"> Date</label>
-                <input 
-                  type="date" 
+                <input
+                  type="date"
                   name="date"
                   placeholder="Enter your date"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.date}
                   onChange={handleInput}
@@ -73,12 +73,12 @@ export const CreateAccount = () => {
               </div>
               <div>
                 <label htmlFor="account_number"> Account Number</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="account_no"
                   placeholder="Enter account number"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.account_no}
                   onChange={handleInput}
@@ -86,12 +86,12 @@ export const CreateAccount = () => {
               </div>
               <div>
                 <label htmlFor="name"> Consumer Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="consumer_name"
                   placeholder="Enter consumer name"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.consumer_name}
                   onChange={handleInput}
@@ -99,12 +99,12 @@ export const CreateAccount = () => {
               </div>
               <div>
                 <label htmlFor="address"> Address</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="address"
                   placeholder="Enter your address"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.address}
                   onChange={handleInput}
@@ -112,12 +112,12 @@ export const CreateAccount = () => {
               </div>
               <div>
                 <label htmlFor="number"> Aadhar Number</label>
-                <input 
-                  type="number" 
+                <input
+                  type="number"
                   name="aadhar_no"
                   placeholder="Enter your Aadhar number"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.aadhar_no}
                   onChange={handleInput}
@@ -125,12 +125,12 @@ export const CreateAccount = () => {
               </div>
               <div>
                 <label htmlFor="phone"> Mobile Number</label>
-                <input 
-                  type="number" 
+                <input
+                  type="number"
                   name="mobile_no"
                   placeholder="Enter your mobile number"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.mobile_no}
                   onChange={handleInput}
@@ -138,12 +138,12 @@ export const CreateAccount = () => {
               </div>
               <div>
                 <label htmlFor="emai"> Gmail id</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="mail_id"
                   placeholder="Enter your email address"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.mail_id}
                   onChange={handleInput}
@@ -151,12 +151,12 @@ export const CreateAccount = () => {
               </div>
               <div>
                 <label htmlFor="balance"> Opening balance</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="opening_bal"
                   placeholder="Enter opening balance"
                   id="text"
-                  required 
+                  required
                   autoComplete="off"
                   value={member.opening_bal}
                   onChange={handleInput}

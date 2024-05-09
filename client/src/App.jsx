@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Home } from "./pages/Home";
-import { CreateAccount } from "./pages/CreateAccount";
+import { CreateAccount } from "./pages/Create-Account";
 import { DepositAmount } from "./pages/DepositAmount";
 import { WithdrawAmount } from "./pages/WithdrawAmount";
 import { Login } from "./pages/Login";

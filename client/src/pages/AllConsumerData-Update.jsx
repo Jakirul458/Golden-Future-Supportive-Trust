@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 export const UpdateConsumerData = () => {
   const [data, setData] = useState({
     date: "",
-    serial_no: "",
     account_no: "",
     consumer_name: "",
     address: "",
@@ -90,6 +89,98 @@ export const UpdateConsumerData = () => {
                   onChange={handleInput}
                 />
               </div>
+              <div>
+                <label htmlFor="account_number"> Account Number</label>
+                <input 
+                  type="text" 
+                  name="account_no"
+                  placeholder="Enter account number"
+                  id="text"
+                  required 
+                  autoComplete="off"
+                  value={data.account_no}
+                  onChange={handleInput}
+                />
+              </div>
+              <div>
+                <label htmlFor="consumer_name"> Consumer Name</label>
+                <input 
+                  type="text" 
+                  name="consumer_name"
+                  placeholder="Enter consumer name"
+                  id="text"
+                  required 
+                  autoComplete="off"
+                  value={data.consumer_name}
+                  onChange={handleInput}
+                />
+              </div>
+              <div>
+                <label htmlFor="address"> Address</label>
+                <input 
+                  type="text" 
+                  name="address"
+                  placeholder="Enter your address"
+                  id="text"
+                  required 
+                  autoComplete="off"
+                  value={data.address}
+                  onChange={handleInput}
+                />
+              </div>
+              <div>
+                <label htmlFor="aadhar_no"> Aadhar Number</label>
+                <input 
+                  type="number" 
+                  name="aadhar_no"
+                  placeholder="Enter your Aadhar number"
+                  id="text"
+                  required 
+                  autoComplete="off"
+                  value={data.aadhar_no}
+                  onChange={handleInput}
+                />
+              </div>
+              <div>
+                <label htmlFor="mobile_no"> Mobile Number</label>
+                <input 
+                  type="number" 
+                  name="mobile_no"
+                  placeholder="Enter your mobile number"
+                  id="text"
+                  required 
+                  autoComplete="off"
+                  value={data.mobile_no}
+                  onChange={handleInput}
+                />
+              </div>
+              <div>
+                <label htmlFor="mail_id"> Gmail id</label>
+                <input 
+                  type="email" 
+                  name="mail_id"
+                  placeholder="Enter your email address"
+                  id="text"
+                  required 
+                  autoComplete="off"
+                  value={data.mail_id}
+                  onChange={handleInput}
+                />
+              </div>
+              <div>
+                <label htmlFor="opening_bal"> Opening balance</label>
+                <input 
+                  type="text" 
+                  name="opening_bal"
+                  placeholder="Enter opening balance"
+                  id="text"
+                  required 
+                  autoComplete="off"
+                  value={data.opening_bal}
+                  onChange={handleInput}
+                />
+              </div>
+
               {/* Repeat this pattern for other input fields */}
               <button type="submit">Save</button>
             </form>

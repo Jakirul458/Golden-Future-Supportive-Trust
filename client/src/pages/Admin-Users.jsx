@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -29,10 +29,10 @@ export const AdminUsers = () => {
 
   // Delete users declaration
 
-  const deleteUser=async(id)=>{
+  const deleteUser = async (id) => {
 
-    try{
-   const response = await fetch(`http://localhost:3000/api/admin/users/delete/${id}`, {
+    try {
+      const response = await fetch(`http://localhost:3000/api/admin/users/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: authorizationToken,
@@ -41,16 +41,16 @@ export const AdminUsers = () => {
 
       const data = await response.json();
       //console.log(`user after delete: ${data}`);
-        alert("User deleted successfully");
-        if(response.ok){
-          getAllUsersData();
-        }
-   }catch(error){
-   console.log(error);
-   }
+      alert("User deleted successfully");
+      if (response.ok) {
+        getAllUsersData();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
- // get user from database to admin panel
+  // get user from database to admin panel
   useEffect(() => {
     getAllUsersData();
   }, []);
@@ -84,14 +84,14 @@ export const AdminUsers = () => {
 
                   <td>
                     <Link to={`/admin/users/${curUser._id}/edit`}>Edit</Link>
-                    </td>
+                  </td>
 
 
 
 
                   <td>
-                   <button  onClick={()=>deleteUser(curUser._id)}>  </button>
-                      Delete
+                    <button onClick={() => deleteUser(curUser._id)}>  </button>
+                    Delete
                   </td>
                 </tr>
               ))}
