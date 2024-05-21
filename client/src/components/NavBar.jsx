@@ -12,7 +12,7 @@ const NavBar = () => {
   const { isLoggedIn } = useAuth();
   return (
     <header>
-      <div className="container">
+      <div >
         <div>
           <NavLink to="navbar"> Portfolio webpage </NavLink>
         </div>

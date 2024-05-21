@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 export const UpdateConsumerData = () => {
   const [data, setData] = useState({
     date: "",
+    transaction_no:"",
     account_no: "",
     consumer_name: "",
     address: "",
