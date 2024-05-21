@@ -14,6 +14,7 @@ import { AdminAddProducts } from "./pages/Admin-Add-New-Products";
 import { AdminUsers } from "./pages/Admin-Users";
 import { AdminUpdate } from "./pages/Admin-Update";
 import { AllConsumerData } from "./pages/AllConsumerData";
+import {FindAccounts} from "./pages/FindAccount";
 import { UpdateConsumerData } from "./pages/AllConsumerData-Update";
 import NavBar from "./components/NavBar";
 
@@ -38,6 +39,8 @@ const App = () => {
               <Route path="depositamount" element={<DepositAmount />} />
               <Route path="withdrawamount" element={<WithdrawAmount />} />
               <Route path="allconsumers" element={<AllConsumerData />} />
+              
+              <Route path="findaccount" element={<FindAccounts/>} />
               <Route path="allConsumers/:id/edit" element={<UpdateConsumerData />} />
             </Route>
             <Route path="*" element={<Error />} />

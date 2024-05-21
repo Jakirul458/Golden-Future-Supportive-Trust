@@ -61,7 +61,7 @@ export const AllConsumerData = () => {
           <thead>
             <tr style={{ backgroundColor: "#f2f2f2" }}>
               <th style={{ padding: "12px", textAlign: "left" }}>Date</th>
-              <th style={{ padding: "12px", textAlign: "left" }}>Serial Number</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>Transaction No</th>
               <th style={{ padding: "12px", textAlign: "left" }}>Account Number</th>
               <th style={{ padding: "12px", textAlign: "left" }}>Consumer Name</th>
               <th style={{ padding: "12px", textAlign: "left" }}>Address</th>
@@ -69,6 +69,7 @@ export const AllConsumerData = () => {
               <th style={{ padding: "12px", textAlign: "left" }}>Mobile Number</th>
               <th style={{ padding: "12px", textAlign: "left" }}>Mail Id</th>
               <th style={{ padding: "12px", textAlign: "left" }}>Opening Bal</th>
+              <th style={{ padding: "12px", textAlign: "left" }}>Total Balance</th>
               <th style={{ padding: "12px", textAlign: "left" }}>Actions</th>
             </tr>
           </thead>
@@ -76,7 +77,7 @@ export const AllConsumerData = () => {
             {users.map((curUser) => (
               <tr key={curUser._id} style={{ borderBottom: "1px solid #ddd" }}>
                 <td style={{ padding: "12px", textAlign: "left" }}>{curUser.date}</td>
-                <td style={{ padding: "12px", textAlign: "left" }}>{curUser.serial_no}</td>
+                <td style={{ padding: "12px", textAlign: "left" }}>{curUser.transaction_no}</td>
                 <td style={{ padding: "12px", textAlign: "left" }}>{curUser.account_no}</td>
                 <td style={{ padding: "12px", textAlign: "left" }}>{curUser.consumer_name}</td>
                 <td style={{ padding: "12px", textAlign: "left" }}>{curUser.address}</td>
@@ -84,6 +85,8 @@ export const AllConsumerData = () => {
                 <td style={{ padding: "12px", textAlign: "left" }}>{curUser.mobile_no}</td>
                 <td style={{ padding: "12px", textAlign: "left" }}>{curUser.mail_id}</td>
                 <td style={{ padding: "12px", textAlign: "left" }}>{curUser.opening_bal}</td>
+                <td style={{ padding: "12px", textAlign: "left" }}>{curUser.total_bal}</td>
+
                 <td style={{ padding: "12px", textAlign: "left" }}>
                   <Link to={`/admin/allConsumers/${curUser._id}/edit`} style={{ marginRight: "8px" }}>Edit</Link>
                   <button onClick={() => deleteUser(curUser._id)}>Delete</button>

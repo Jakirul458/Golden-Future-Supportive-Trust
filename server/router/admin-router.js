@@ -22,8 +22,8 @@ const adminAddCategory= require("../controllers/Admin-Add-Category-controller");
 // saving Account Admin  Logic //
 //*-----------------------*
 const AdminCreateAccount= require("../controllers/Admin-CreateAccount-controller");
-const Deposit= require("../controllers/deposit");
-const Withdraw= require("../controllers/withdraw");
+//const Deposit= require("../controllers/deposit");
+//const Withdraw= require("../controllers/withdraw");
 
 
 
@@ -34,9 +34,11 @@ const Withdraw= require("../controllers/withdraw");
 //Customer Information Form
 router.route("/admincreateaccount").post(userMiddleware,adminMiddleware,AdminCreateAccount);
 //Customer Money Deposit Logic 
-router.route("/deposit").post(userMiddleware,adminMiddleware,Deposit);
+router.route("/deposit").patch(userMiddleware,adminMiddleware,adminController.Deposit);
 //Customer Money Deposit Logic 
-router.route("/withdraw").post(userMiddleware,adminMiddleware, Withdraw);
+router.route("/withdraw").patch(userMiddleware,adminMiddleware,adminController.Withdraw);
+//Customer Money Deposit Logic 
+router.route("/findAccount").get(userMiddleware,adminMiddleware,adminController.FindAccount);
 
 
 

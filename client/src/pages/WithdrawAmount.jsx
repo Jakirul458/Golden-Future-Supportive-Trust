@@ -27,7 +27,7 @@ export const WithdrawAmount = () => {
     e.preventDefault();
     try {
       const response = await fetch(`http://localhost:3000/api/admin/withdraw`, {
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           Authorization: authorizationToken,
@@ -71,7 +71,7 @@ export const WithdrawAmount = () => {
               <div>
                 <label htmlFor="account_no"> Account Number</label>
                 <input 
-                  type="text" 
+                  type="number" 
                   name="account_no"
                   placeholder="Enter account number"
                   required 
@@ -83,7 +83,7 @@ export const WithdrawAmount = () => {
               <div>
                 <label htmlFor="transaction_no"> Transaction id</label>
                 <input 
-                  type="text" 
+                  type="number" 
                   name="transaction_no"
                   placeholder="Transaction id"
                   required 
@@ -106,11 +106,12 @@ export const WithdrawAmount = () => {
                 />
               </div>
 
+              
               <div>
                 <label htmlFor="remarks"> Remarks</label>
-                <input 
-                  type="text" 
+                <textarea 
                   name="remarks"
+                  id="remarks"
                   placeholder="Remarks"
                   required 
                   autoComplete="off"

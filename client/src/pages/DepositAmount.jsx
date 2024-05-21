@@ -27,7 +27,7 @@ export const DepositAmount = () => {
     e.preventDefault();
     try {
       const response = await fetch(`http://localhost:3000/api/admin/deposit`, {
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           Authorization: authorizationToken,
